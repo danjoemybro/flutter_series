@@ -30,7 +30,10 @@ class HDivider extends StatelessWidget {
   final double height;
   @override
   Widget build(BuildContext context) {
-    return Divider(height: height, color: Colors.white);
+    return Divider(
+      height: height,
+      color: Colors.white,
+    );
   }
 }
 
@@ -39,7 +42,10 @@ class VDivider extends StatelessWidget {
   final double width;
   @override
   Widget build(BuildContext context) {
-    return VerticalDivider(width: width, color: Colors.white);
+    return VerticalDivider(
+      width: width,
+      color: Colors.white,
+    );
   }
 }
 
@@ -125,10 +131,12 @@ class PadRow extends StatelessWidget {
     }
     return Padding(
       padding: padding,
-      child: Row(
-        mainAxisAlignment: mainAxisAlignment,
-        crossAxisAlignment: crossAxisAlignment,
-        children: widgets,
+      child: IntrinsicHeight(
+        child: Row(
+          mainAxisAlignment: mainAxisAlignment,
+          crossAxisAlignment: crossAxisAlignment,
+          children: widgets,
+        ),
       ),
     );
   }
@@ -155,7 +163,8 @@ List<Widget> divideWidgets({
     if (index % 2 == comparisonNum) {
       if (listType == _ListType.column) {
         return divider ? HDivider(spacing) : SizedHeight(spacing);
-      } else {
+      } else if (listType == _ListType.row) {
+        return VDivider(spacing);
         return divider ? VDivider(spacing) : SizedWidth(spacing);
       }
     }

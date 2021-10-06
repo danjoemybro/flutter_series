@@ -33,7 +33,7 @@ class MyHomePage extends StatelessWidget {
         padding: const EdgeInsets.all(20) + MediaQuery.of(context).padding,
         children: [
           Text(
-            "Interleaving Modes:",
+            "Need to knows:",
             style: Theme.of(context).textTheme.headline5,
           ),
           const _Housing(
@@ -70,6 +70,36 @@ class MyHomePage extends StatelessWidget {
                 _BackedText("flutter_series is"),
                 _BackedText("the best flutter package"),
                 _BackedText("to date"),
+              ],
+            ),
+          ),
+          const _Housing(
+            title: "Simple adding of dividers",
+            // dividers can be added by defining interleaving as fullDivided or inBetweenDivided
+            child: PadColumn(
+              interleaving: Interleaving.inBetweenDivided,
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              spacing: 10,
+              children: [
+                _BackedText("best"),
+                _BackedText("flutter"),
+                _BackedText("package"),
+              ],
+            ),
+          ),
+          const _Housing(
+            title: "Works with rows as well",
+            // rows work as well
+            child: PadRow(
+              interleaving: Interleaving.inBetweenDivided,
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              spacing: 20,
+              children: [
+                _BackedText("best"),
+                _BackedText("flutter"),
+                _BackedText("package"),
               ],
             ),
           ),
