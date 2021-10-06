@@ -1,7 +1,7 @@
 name: flutter_series
 description: >
   Improved row and column widgets to include spacing and interleaved dividers.
-version: 0.0.1
+version: 0.1.0
 homepage: "https://freshplay.co.uk/"
 
 environment:
