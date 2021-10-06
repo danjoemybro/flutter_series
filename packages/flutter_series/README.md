@@ -3,7 +3,7 @@
 
 ## Features
 
-A set of widgets that help to make oyur code cleaner.
+A set of widgets that help to make your code cleaner.
 
 | Widgets | Description |
 |---|---|

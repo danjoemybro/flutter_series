@@ -164,7 +164,6 @@ List<Widget> divideWidgets({
       if (listType == _ListType.column) {
         return divider ? HDivider(spacing) : SizedHeight(spacing);
       } else if (listType == _ListType.row) {
-        return VDivider(spacing);
         return divider ? VDivider(spacing) : SizedWidth(spacing);
       }
     }
