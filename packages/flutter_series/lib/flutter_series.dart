@@ -30,7 +30,7 @@ class HDivider extends StatelessWidget {
   final double height;
   @override
   Widget build(BuildContext context) {
-    return Divider(height: height, color: Colors.white.withOpacity(0.3));
+    return Divider(height: height, color: Colors.white);
   }
 }
 
@@ -39,7 +39,7 @@ class VDivider extends StatelessWidget {
   final double width;
   @override
   Widget build(BuildContext context) {
-    return VerticalDivider(width: width, color: Colors.white.withOpacity(0.3));
+    return VerticalDivider(width: width, color: Colors.white);
   }
 }
 

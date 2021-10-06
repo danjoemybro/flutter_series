@@ -100,11 +100,24 @@ VDivider(20) = VerticalDivider(
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Use this package as a library
+Depend on it
+Run this command:
 
-Simply run Dart 
+With Flutter:
+```
+$ flutter pub add flutter_series
+```
+This will add a line like this to your package's pubspec.yaml (and run an implicit flutter pub get):
+```yaml
+dependencies:
+  flutter_series: ^0.0.1
+```
 
+Once added to your pubspec.yaml, you can reference the package in your file using:
+```dart
+import 'package:flutter_series/flutter_series.dart';
+```
 ## Usage
 
 TODO: Include short and useful examples for package users. Add longer examples
