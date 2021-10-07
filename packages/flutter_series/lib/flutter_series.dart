@@ -3,6 +3,7 @@ library flutter_series;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+// Sized Height and width are cleaner versions of sized box, with less features.
 class SizedHeight extends StatelessWidget {
   const SizedHeight(this.height, {Key? key}) : super(key: key);
   final double height;
@@ -17,12 +18,26 @@ class SizedWidth extends StatelessWidget {
   Widget build(BuildContext context) => SizedBox(width: width);
 }
 
-void navPush(BuildContext context, Widget page, {double pops = 0}) {
-  for (var i = 0; i < pops; i++) {
-    Navigator.pop(context);
-  }
-  Navigator.push(context, CupertinoPageRoute(builder: (context) => page));
-}
+// HDivider and VDivider
+
+// To change their colors, change your theme's dividerColor
+// lightTheme suggestion: const Color(0x8F1F1F1F)
+// darkTheme suggestion: const Color(0x8AFFFFFF)
+
+// Add the following to your theme data to your MaterialApp:
+/*
+themeMode: ThemeMode.system,
+theme: ThemeData(
+  primarySwatch: Colors.blue,
+  brightness: Brightness.light,
+  dividerTheme: const DividerThemeData(color: Color(0x8F1F1F1F)),
+),
+darkTheme: ThemeData(
+  primarySwatch: Colors.blue,
+  brightness: Brightness.dark,
+  dividerTheme: const DividerThemeData(color: Color(0x8AFFFFFF)),
+),
+*/
 
 class HDivider extends StatelessWidget {
   const HDivider(this.height, {Key? key}) : super(key: key);
@@ -30,10 +45,7 @@ class HDivider extends StatelessWidget {
   final double height;
   @override
   Widget build(BuildContext context) {
-    return Divider(
-      height: height,
-      color: Colors.white,
-    );
+    return Divider(height: height);
   }
 }
 
@@ -42,15 +54,23 @@ class VDivider extends StatelessWidget {
   final double width;
   @override
   Widget build(BuildContext context) {
-    return VerticalDivider(
-      width: width,
-      color: Colors.white,
-    );
+    return VerticalDivider(width: width);
   }
 }
 
+// These are different interleaving modes a user can access
+// none:              No spacing is applied, just like a standard series.
+// inBetween:         Spacing appears in between children, but not outside of them.
+// full:              Spacing appears in between widgets and outside of them.
+// inBetweenDivided:  Dividers appear in between children, but not outside of them.
+// fullDivided:       Dividers appear in between widgets and outside of them.
 enum Interleaving { none, full, inBetween, fullDivided, inBetweenDivided }
+
+// _ListType is only used internally to define what type of series a widget is.
 enum _ListType { column, row }
+
+// PadColumn and PadRow  are simply a Column or Row widget with more control.
+// Padding can be added  around the entire series add add spacing between widgets.
 
 class PadColumn extends StatelessWidget {
   const PadColumn({
@@ -73,6 +93,7 @@ class PadColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Interleaving localInterleaving = interleaving;
+    // If spacing is provided but interleaving is null then add spacing inBetween
     if (spacing != null && interleaving == Interleaving.none) {
       localInterleaving = Interleaving.inBetween;
     }
@@ -117,6 +138,7 @@ class PadRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Interleaving localInterleaving = interleaving;
+    // If spacing is provided but interleaving is null then add spacing inBetween
     if (spacing != null && interleaving == Interleaving.none) {
       localInterleaving = Interleaving.inBetween;
     }
@@ -142,6 +164,7 @@ class PadRow extends StatelessWidget {
   }
 }
 
+// This is the calculation for the spacers or dividers.
 List<Widget> divideWidgets({
   required List<Widget> children,
   required Interleaving interleaving,
@@ -171,4 +194,15 @@ List<Widget> divideWidgets({
     return children[childIndex];
   });
   return widgets;
+}
+
+// A simple way to push a new page with CupertinoPageRoute styling.
+// To use, just call
+// navPush(context, yourPage);
+
+void navPush(BuildContext context, Widget page, {double pops = 0}) {
+  for (var i = 0; i < pops; i++) {
+    Navigator.pop(context);
+  }
+  Navigator.push(context, CupertinoPageRoute(builder: (context) => page));
 }

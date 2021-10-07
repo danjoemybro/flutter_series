@@ -14,9 +14,16 @@ class FlutterSeriesApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Series',
       scrollBehavior: const CupertinoScrollBehavior(),
+      themeMode: ThemeMode.system,
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        brightness: Brightness.light,
+        dividerTheme: const DividerThemeData(color: Color(0x8F1F1F1F)),
+      ),
+      darkTheme: ThemeData(
+        primarySwatch: Colors.blue,
         brightness: Brightness.dark,
+        dividerTheme: const DividerThemeData(color: Color(0x8AFFFFFF)),
       ),
       home: const MyHomePage(),
     );
@@ -186,7 +193,7 @@ class _Housing extends StatelessWidget {
       children: [
         Text(title),
         Container(
-          color: Colors.blue,
+          // color: Colors.blue,
           child: child,
         ),
       ],
