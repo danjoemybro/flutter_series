@@ -1,7 +1,7 @@
 name: flutter_series
 description: >
   Improved row and column widgets to include spacing and interleaved dividers.
-version: 0.1.1
+version: 0.1.2
 repository: https://github.com/danjoemybro/flutter_series
 
 environment:
